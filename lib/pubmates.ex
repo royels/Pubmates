@@ -2,6 +2,9 @@ defmodule Pubmates do
   use Application
   use HTTPoison.Base
 
+  @expected_fields ~w(
+    
+
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
   # for more information on OTP Applications
   def start(_type, _args) do
@@ -16,5 +19,9 @@ defmodule Pubmates do
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Pubmates.Supervisor]
     Supervisor.start_link(children, opts)
+  end
+  def process_url(endpoint) do
+    
+
   end
 end

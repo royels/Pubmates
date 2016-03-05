@@ -1,8 +1,16 @@
+
 defmodule PubmatesTest do
   use ExUnit.Case
   doctest Pubmates
 
-  test "the truth" do
-    assert 1 + 1 == 2
+  test "key" do
+    assert(Pubmates.key == System.get_env("POSTMATES_API_KEY"), "Key is not set")
   end
+
+  test "request get" do
+    test_var = Pubmates.request(:get, "https://api.github.com/users/royels")    
+    assert(Map.fetch!(test_var.body, "login") == "royels", "Bad parameters")
+    assert(test_var.status_code == 200)
+  end
+
 end

@@ -6,17 +6,18 @@ defmodule Pubmates do
   @api_base "https://api.postmates.com/"
 
 
-  @expected_fields ~w(
-    fee currency dropoff_eta duration expires
+ # @expected_fields ~w(
+ #   fee currency dropoff_eta duration expires
 
-    properties features
+ #   properties features
 
-    status complete pickup_eta 
-    dropoff_deadline quote_id customer_signature_img_href
-    manifest dropoff_identifier courier related_deliveries
+ #   status complete pickup_eta 
+ #   dropoff_deadline quote_id customer_signature_img_href
+ #   manifest dropoff_identifier courier related_deliveries
 
-    
-  )
+ #   
+ #   
+ # )
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
   # for more information on OTP Applications
@@ -41,8 +42,10 @@ defmodule Pubmates do
   def process_response_body(body) do
     body
     |> Poison.decode!
-    |> Dict.take(@expected_fields)
-    |> Enum.map(fn({k, v}) -> {String.to_atom(k), v} end)
+ #   |> Dict.take(@expected_fields)
+ #   |> Enum.map(fn({k, v}) -> {String.to_atom(k), v} end)
+ #  uncomment this and @expected fields to be able to access
+ #  by atom instead. 
   end
 
   def base_api_host do
@@ -57,5 +60,21 @@ defmodule Pubmates do
     System.get_env("POSTMATES_API_KEY")
   end
     
+
+  def request(method, endpoint, body) when method == :get do
+    Pubmates.get!(endpoint, Poison.encode! body)
+  end
+
+  def request(method, endpoint) when method == :get do
+    Pubmates.get!(endpoint)
+  end
+
+  def request(method, endpoint) when method == :post do
+    Pubmates.post!(endpoint)
+  end
+
+  def request(method, endpoint, body) when method == :post do
+    Pubmates.post!(endpoint, Poison.encode! body)
+  end
 
 end

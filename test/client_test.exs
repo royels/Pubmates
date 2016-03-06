@@ -4,7 +4,8 @@ defmodule ClientTest do
   doctest Pubmates
 
   test "get delivery quote" do
-    assert(true, "")
+    quote_response = Pubmates.Client.get_delivery_quote(System.get_env("TEST_CUSTOMER_ID"),  "20 McAllister St, San Francisco, CA", "101 Market St, San Francisco, CA")
+    assert(Map.fetch!(quote_response.body, "kind") == "delivery_quote")
   end
 
 

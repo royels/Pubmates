@@ -4,6 +4,7 @@ defmodule Pubmates do
 
     
   @api_base "https://api.postmates.com/"
+  @version_number  "v1/"
 
 
  # @expected_fields ~w(
@@ -44,18 +45,15 @@ defmodule Pubmates do
  #  by atom instead. 
   end
 
-  def process_url(url)
-    
-  end
 
   def base_api_host do
     @api_base
   end
 
   def customer_prefix do
-    "v1/customers/"
+    @version_number <> "customers/"
   end
-
+  
   def key do
     System.get_env("POSTMATES_API_KEY")
   end

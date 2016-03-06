@@ -34,10 +34,6 @@ defmodule Pubmates do
     opts = [strategy: :one_for_one, name: Pubmates.Supervisor]
     Supervisor.start_link(children, opts)
   end
-  def process_url(endpoint) do
-    endpoint
-  end
-
 
   def process_response_body(body) do
     body
@@ -46,6 +42,10 @@ defmodule Pubmates do
  #   |> Enum.map(fn({k, v}) -> {String.to_atom(k), v} end)
  #  uncomment this and @expected fields to be able to access
  #  by atom instead. 
+  end
+
+  def process_url(url)
+    
   end
 
   def base_api_host do

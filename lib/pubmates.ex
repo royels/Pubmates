@@ -59,22 +59,5 @@ defmodule Pubmates do
   def key do
     System.get_env("POSTMATES_API_KEY")
   end
-    
-
-  def request(method, endpoint, body) when method == :get do
-    Pubmates.get!(endpoint, Poison.encode! body)
-  end
-
-  def request(method, endpoint) when method == :get do
-    Pubmates.get!(endpoint)
-  end
-
-  def request(method, endpoint) when method == :post do
-    Pubmates.post!(endpoint)
-  end
-
-  def request(method, endpoint, body) when method == :post do
-    Pubmates.post!(endpoint, Poison.encode! body)
-  end
 
 end

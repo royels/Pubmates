@@ -8,9 +8,8 @@ defmodule PubmatesTest do
   end
 
   test "request get" do
-    test_var = Pubmates.request(:get, "https://api.github.com/users/royels")    
-    assert(Map.fetch!(test_var.body, "login") == "royels", "Bad parameters")
-    assert(test_var.status_code == 200)
+    test_var = Pubmates.request!(:get, "https://api.github.com/users/royels", "{\"foo\": 3}", [{"Accept", "application/json"}]).body
+    assert(Map.fetch!(test_var, "login") == "royels", "Bad parameters")
   end
 
 end

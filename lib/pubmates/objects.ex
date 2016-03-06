@@ -16,3 +16,7 @@ defmodule Tip do
   defstruct [:tip_by_customer]
 end
 
+defmodule Empty do
+  @derive [Poison.Encoder]
+  defstruct []
+end

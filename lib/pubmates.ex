@@ -58,4 +58,9 @@ defmodule Pubmates do
     System.get_env("POSTMATES_API_KEY")
   end
 
+  def auth_header do
+    encoded_auth = Base.url_encode64(Pubmates.key <> ":")
+    "Basic " <> encoded_auth
+  end
+
 end

@@ -60,7 +60,7 @@ defmodule Pubmates do
 
   def auth_header do
     encoded_auth = Base.url_encode64(Pubmates.key <> ":")
-    %{"Authorization": "Basic " <> encoded_auth}
+    Map.new(["Authorization": "Basic " <> encoded_auth])
   end
 
 end

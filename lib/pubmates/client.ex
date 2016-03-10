@@ -12,7 +12,7 @@ defmodule Pubmates.Client do
   end
 
 
-  def create_delivery(customer_id, pickup_object, dropoff_object, manifest, manifest_reference // "", quote_id // "") do
+  def create_delivery(customer_id, pickup_object, dropoff_object, manifest, manifest_reference \\ "", quote_id \\ "") do
     url = Pubmates.base_api_host <> Pubmates.customer_prefix <> customer_id <> "/deliveries" 
     pickup = Map.to_list(pickup_object)
     dropoff = Map.to_list(dropoff_object)

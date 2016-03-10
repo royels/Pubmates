@@ -14,7 +14,7 @@ defmodule ClientTest do
     assert(response.status_code == 200)
   end
 
-  test "delivery actions" do
+  test "delivery integration" do
     assert(true, "")
   end
 end

@@ -11,6 +11,16 @@ defmodule Pubmates.Client do
     Pubmates.request!(:get, url, "", Pubmates.auth_header)
   end
 
+
+  def create_delivery(customer_id, pickup_object, dropoff_object, manifest, manifest_reference // "", quote_id // "") do
+    url = Pubmates.base_api_host <> Pubmates.customer_prefix <> customer_id <> "/deliveries" 
+    pickup = Map.to_list(pickup_object)
+    dropoff = Map.to_list(dropoff_object)
+    final = pickup ++ dropoff ++ [manifest: manifest, manifest_reference: manifest_reference, quote_id: quote_id]
+    Pubmates.request!(:post, url, {:form, final} , Pubmates.auth_header)
+  end
+
+
   def get_ongoing_deliveries(customer_id) do
     url = Pubmates.base_api_host <> Pubmates.customer_prefix <> customer_id <> "/deliveries"
     Pubmates.request!(:get, url,{:form, [filter: "ongoing"]}, Pubmates.auth_header)

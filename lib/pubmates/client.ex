@@ -28,18 +28,18 @@ defmodule Pubmates.Client do
 
   def get_specific_delivery(customer_id, delivery_id) do
     url = Pubmates.base_api_host <> Pubmates.customer_prefix <> customer_id <> "/deliveries/" <> delivery_id
-    Pubmates.request!(:get, url, {}, Pubmates.auth_header)
+    Pubmates.request!(:get, url, [], Pubmates.auth_header)
   end
   
   def cancel_delivery(customer_id, delivery_id) do
     url = Pubmates.base_api_host <> Pubmates.customer_prefix <> customer_id <> "/deliveries/" <> delivery_id <> "/cancel"
-    Pubmates.request!(:post, url, {}, Pubmates.auth_header)
+    Pubmates.request!(:post, url, [], Pubmates.auth_header)
   end
  
 
   def return_delivery(customer_id, delivery_id) do
     url = Pubmates.base_api_host <> Pubmates.customer_prefix <> customer_id <> "/deliveries/" <> delivery_id <> "/return"
-    Pubmates.request!(:post, url, {}, Pubmates.auth_header)
+    Pubmates.request!(:post, url, [], Pubmates.auth_header)
   end
 
   def add_tip_to_delivery(customer_id, delivery_id, tip) do

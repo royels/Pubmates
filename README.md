@@ -7,6 +7,10 @@ You can install it by adding it to your `mix.exs` and running `mix deps.get`
 
 Refer to [Postmates'](https://postmates.com/developer/docs/endpoints#create_delivery) API documentation for endpoint parameters.
 
+####TODO:
+1. Webhooks
+2. Greater test coverage
+
 
 ###Dependencies
 1. HTTPoison
